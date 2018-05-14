@@ -1,0 +1,32 @@
+{
+  "name": "@lug/netproxy-node-ipc",
+  "version": "1.0.0",
+  "description": "NetProxy implementation of node-ipc",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lughus/NetProxy-node-ipc.git"
+  },
+  "keywords": [
+    "net",
+    "proxy",
+    "node",
+    "node-ipc",
+    "ipc"
+  ],
+  "author": "Westixy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Lughus/NetProxy-node-ipc/issues"
+  },
+  "homepage": "https://github.com/Lughus/NetProxy-node-ipc#readme",
+  "dependencies": {
+    "@lug/netproxy": "^1.0.1",
+    "debug": "^3.1.0",
+    "node-ipc": "^9.1.1",
+    "uuid": "^3.2.1"
+  }
+}
