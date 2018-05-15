@@ -88,7 +88,7 @@ class NetServerProxyNodeIpc extends NetServerProxy {
   }
   listen(port) {
     this._port = port
-    ipc.serveNet(port, () => {
+    ipc.serveNet('0.0.0.0', port, () => {
       this._state = 'listening'
       this._emitter = ipc.server
       this._initIpcEvents()
