@@ -7,24 +7,29 @@ Implementation of node-ipc in this module
 - install `npm i @lug/netproxy-node-ipc`
 - use it 
 ```js
-const {NetClientProxyNodeIpc, NetServerProxyNodeIpc} = require('@lug/netproxy-node-ipc')
+const {
+  NetClientProxyNodeIpc,
+  NetServerProxyNodeIpc
+} = require('../netProxy')
 
 const client = new NetClientProxyNodeIpc()
 const server = new NetServerProxyNodeIpc()
 
-server.listen(9999)
 
-server.ev.on('socket.data',(socket, data)=>{
+server.ev.on('socket.data', (socket, data) => {
   server.send(socket, `I received your message : """${data}"""`)
 })
+server.ev.on('start', ()=>{
+  setTimeout(client.disconnect.bind(client),1000)
+  setTimeout(server.stop.bind(server),2500)
+})
 
-client.connect('localhost',9999)
+client.ev.on('connected', ()=>{
+  client.send('Hey srv its me')
+})
 
-client.send('Hey srv its me')
-
-client.disconnect()
-
-server.stop()
+client.connect('localhost', 9999)
+server.listen(9999)
 ```
 
 ## Methods
